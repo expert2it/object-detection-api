@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Processor\uploads\**" />
+    <Content Remove="wwwroot\Processor\uploads\**" />
+    <EmbeddedResource Remove="wwwroot\Processor\uploads\**" />
+    <None Remove="wwwroot\Processor\uploads\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Processor\capture_camera.py" />
+    <Content Remove="wwwroot\Processor\cards.names" />
+    <Content Remove="wwwroot\Processor\table.mp4" />
+    <Content Remove="wwwroot\Processor\table_video_out.avi" />
+    <Content Remove="wwwroot\Processor\yolocards.cfg" />
+    <Content Remove="wwwroot\Processor\yolocards_608.weights" />
+    <Content Remove="wwwroot\Processor\yolov3-cards.cfg" />
+    <Content Remove="wwwroot\Processor\yolov3-gun.cfg" />
+    <Content Remove="wwwroot\Processor\yolov3-gun_500308.weights" />
+    <Content Remove="wwwroot\Processor\yolov3-obj.cfg" />
+    <Content Remove="wwwroot\Processor\yolov3-obj_2500.weights" />
+    <Content Remove="wwwroot\Processor\yolov3-obj_850.weights" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.7" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0-preview1.19506.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.18" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+    <PackageReference Include="RestSharp" Version="106.6.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Processor\capture_camera.py">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Models\Users.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Processor\datacollection\" />
+    <Folder Include="wwwroot\Processor\cilidetection\" />
+    <Folder Include="wwwroot\Processor\streaming\" />
+    <Folder Include="wwwroot\Processor\tagging\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>e6b1407a-602a-4239-a320-ad6b2b66e874</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\Projectname.XML</OutputPath>
+  </PropertyGroup>
+
+</Project>

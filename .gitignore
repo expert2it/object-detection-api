@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/wwwroot/Detection/yolo-obj_final.weights
+/wwwroot/Processor/yolo-obj_final.weights
+/wwwroot/Processor/yolov3.weights
+/wwwroot/Processor/yolov3-tiny-obj_final.weights
+/wwwroot/Processor/frozen_east_text_detection.pb

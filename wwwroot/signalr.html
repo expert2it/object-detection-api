@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>Waiting for input...</p>
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/signalr/dist/browser/signalr.js"></script>
+    <script>
+        "use strict";
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("/clientHub").build();        
+        //console.log(connection)
+        connection.on("ReceiveMessage", function (user, message) {
+            var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            var encodedMsg = user + msg;
+
+            console.log(encodedMsg)
+
+            var li = document.createElement("li");
+            li.textContent = msg;
+            document.getElementById("messagesList").appendChild(li);
+        });
+
+        connection.start();
+
+        // Refresh page every minute (OPTIONAL)
+        // setTimeout(() => { window.location.reload(true) }, 60000);
+
+    </script>
+</body>
+</html>
