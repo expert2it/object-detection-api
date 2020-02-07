@@ -1,7 +1,5 @@
 # object-detection-api
 
-TODO documentation.
-
 Object Detection Web API using:
 
 - .Net core 3 Web API
